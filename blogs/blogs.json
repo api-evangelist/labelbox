@@ -1,0 +1,61 @@
+{
+  "name": "Labelbox Blog",
+  "description": "Official Labelbox blog covering AI training data, data labeling, machine learning evaluation, and platform updates.",
+  "url": "https://labelbox.com/blog/",
+  "rssUrl": null,
+  "rssAvailable": false,
+  "note": "No RSS/Atom feed discovered at common paths (/blog/rss, /feed, /feed.xml, /blog/rss.xml, /blog/feed). Blog is served as a JavaScript-rendered page without a discoverable feed endpoint.",
+  "fetched": "2026-06-12",
+  "posts": [
+    {
+      "title": "When benchmarks saturate, what comes next? Meta's GIM pushes AI evaluation toward integrated reasoning",
+      "url": "https://labelbox.com/blog/when-benchmarks-saturate-what-comes-next-metas-gim-pushes-ai-evaluation-toward-integrated-reasoning",
+      "date": "2026-05-20"
+    },
+    {
+      "title": "Engineering trust in an autonomous world",
+      "url": "https://labelbox.com/blog/engineering-trust-in-an-autonomous-world",
+      "date": "2026-04-10"
+    },
+    {
+      "title": "Introducing EchoChain: An audio benchmark for reasoning under pressure in full-duplex dialogue",
+      "url": "https://labelbox.com/blog/introducing-echochain-an-audio-benchmark-for-reasoning-under-pressure-in-full-duplex-dialogue",
+      "date": "2026-03-04"
+    },
+    {
+      "title": "The AI safety illusion: why current safety datasets fool us on model safety",
+      "url": "https://labelbox.com/blog/the-ai-safety-illusion-why-current-safety-datasets-fool-us-on-model-safety",
+      "date": "2026-02-20"
+    },
+    {
+      "title": "Welcoming Upcraft to the Labelbox team",
+      "url": "https://labelbox.com/blog/welcoming-upcraft-to-the-labelbox-team",
+      "date": "2026-02-10"
+    },
+    {
+      "title": "From dormant codebases to lasting value",
+      "url": "https://labelbox.com/blog/from-dormant-codebases-to-lasting-value",
+      "date": "2026-01-20"
+    },
+    {
+      "title": "Reflections on NeurIPS 2025: Advancing evaluation and continual learning in AI",
+      "url": "https://labelbox.com/blog/reflections-on-neurips-2025-advancing-evaluation-and-continual-learning-in-ai",
+      "date": "2025-12-16"
+    },
+    {
+      "title": "Implicit Intelligence and Agent-as-a-World: Evaluating agents on what users don't say",
+      "url": "https://labelbox.com/blog/implicit-intelligence-and-agent-as-a-world-evaluating-agents-on-what-users-dont-say",
+      "date": "2025-11-21"
+    },
+    {
+      "title": "Bridging insight and innovation: Introducing Labelbox Applied Research",
+      "url": "https://labelbox.com/blog/bridging-insight-and-innovation-introducing-labelbox-applied-research",
+      "date": "2025-11-19"
+    },
+    {
+      "title": "Announcing R-ConstraintBench: A novel way to stress-test LLM reasoning abilities under interacting constraints",
+      "url": "https://labelbox.com/blog/announcing-r-constraintbench-a-novel-way-to-stress-test-llm-reasoning-abilities-under-interacting-constraints",
+      "date": "2025-08-22"
+    }
+  ]
+}

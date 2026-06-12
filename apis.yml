@@ -95,6 +95,10 @@ common:
     url: rate-limits/labelbox-rate-limits.yml
   - type: FinOps
     url: finops/labelbox-finops.yml
+  - type: BlogPosts
+    url: blogs/blogs.json
+  - type: JSONLDContext
+    url: json-ld/labelbox-context.jsonld
 
 maintainers:
   - FN: Kin Lane
