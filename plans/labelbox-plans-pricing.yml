@@ -1,0 +1,56 @@
+name: Labelbox Plans and Pricing
+description: >
+  Labelbox offers two primary platform tiers — a Free tier for evaluation and
+  education, and a paid Subscription tier for production workloads. Pricing
+  within the Subscription tier is consumption-based using Labelbox Units (LBUs),
+  with enterprise volume discounts negotiated directly with Labelbox sales.
+specificationVersion: "0.1"
+plans:
+  - name: Free
+    description: >
+      No-cost tier intended for evaluation, education, and small teams
+      exploring the Labelbox platform.
+    url: https://labelbox.com/pricing/
+    isFree: true
+    features:
+      - Up to 30 users
+      - Up to 50 projects
+      - Up to 25 ontologies
+      - 1 workspace
+      - Core catalog, annotate, and model features
+      - Data curation with natural language search
+      - Model-assisted labeling
+      - Community support only
+    limits:
+      users: 30
+      projects: 50
+      ontologies: 25
+      workspaces: 1
+
+  - name: Subscription
+    description: >
+      Full-featured paid tier with unlimited users, projects, and ontologies.
+      Pricing is usage-based via Labelbox Units (LBUs); contact sales for a
+      quote and volume pricing.
+    url: https://labelbox.com/pricing/
+    isFree: false
+    pricingModel: usage-based
+    pricingUnit: LBU (Labelbox Unit)
+    contactSalesURL: https://labelbox.com/contact/
+    features:
+      - Unlimited users
+      - Unlimited projects
+      - Unlimited ontologies
+      - 1 workspace
+      - All Free tier features
+      - Labelbox Monitor
+      - SSO (Single Sign-On)
+      - Custom embeddings
+      - Foundry models
+      - Live multimodal chat editor
+      - Auto-labeling tools
+      - Frontier and custom models
+      - AI critic
+      - Premium support
+      - Labeling quality guarantee
+      - Proactive platform alerts

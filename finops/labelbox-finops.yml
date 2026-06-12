@@ -1,0 +1,67 @@
+name: Labelbox FinOps
+description: >
+  FinOps framework for managing Labelbox API and platform costs.
+  Labelbox uses a consumption-based pricing model denominated in Labelbox
+  Units (LBUs). Understanding and forecasting LBU consumption is the primary
+  cost-management lever for teams using Labelbox at scale.
+specificationVersion: "1.0"
+framework: FinOps Foundation FOCUS-aligned
+
+costModel:
+  type: consumption-based
+  currency: USD
+  unit: LBU (Labelbox Unit)
+  notes: >
+    The Free tier provides access to core features at no cost with user,
+    project, and ontology limits. The Subscription tier is priced per LBU
+    consumed; enterprise volume discounts are available through the sales team.
+  pricingURL: https://labelbox.com/pricing/
+
+tiers:
+  - name: Free
+    monthlyCost: 0
+    currency: USD
+    description: No-cost tier for evaluation, education, and small teams.
+
+  - name: Subscription
+    monthlyCost: variable
+    currency: USD
+    pricingModel: per-LBU
+    description: >
+      Consumption-based billing using Labelbox Units. Contact Labelbox sales
+      for current per-LBU rates and volume discounts.
+    contactURL: https://labelbox.com/contact/
+
+costDrivers:
+  - name: Data Labeling Volume
+    description: Number of assets labeled and annotations created.
+    unit: labeled assets / annotations
+  - name: Model-Assisted Labeling
+    description: AI-assisted label suggestions consumed.
+    unit: AI-assisted labels
+  - name: Auto-labeling
+    description: Fully automated labeling operations (Subscription only).
+    unit: automated labels
+  - name: Foundry Model Usage
+    description: Inference calls to Foundry models for RLHF and preference data (Subscription only).
+    unit: model inference calls
+  - name: Storage
+    description: Dataset and annotation storage within the Labelbox platform.
+    unit: GB stored
+  - name: Users
+    description: Free tier capped at 30; Subscription provides unlimited users.
+    unit: active users
+
+costOptimization:
+  - recommendation: Use the Free tier for prototyping and evaluation before committing to Subscription.
+  - recommendation: Use bulk operations via the Python SDK to minimize API overhead.
+  - recommendation: Leverage model-assisted labeling to reduce human annotation volume and associated costs.
+  - recommendation: Use data curation tools to prioritize high-value assets and avoid labeling redundant data.
+  - recommendation: Set up Labelbox Monitor (Subscription) for proactive cost and quality alerts.
+  - recommendation: Negotiate volume discounts with Labelbox sales for enterprise workloads.
+
+references:
+  - url: https://labelbox.com/pricing/
+    description: Official Labelbox pricing page
+  - url: https://labelbox.com/contact/
+    description: Contact Labelbox sales for enterprise pricing

@@ -1,0 +1,53 @@
+name: Labelbox API Rate Limits
+description: >
+  Labelbox applies rate limits to both its GraphQL API and REST API to ensure
+  platform stability. When a rate limit is exceeded the API returns an HTTP 429
+  status code with a Retry-After response header indicating how many seconds to
+  wait before retrying. Labelbox strongly recommends using the official Python
+  SDK (labelbox-python) rather than calling the GraphQL API directly, as the
+  SDK handles retries and pagination automatically. GraphQL endpoints may be
+  updated or deprecated without notice.
+specificationVersion: "0.1"
+rateLimits:
+  - name: GraphQL API Rate Limit
+    description: >
+      Applies to requests to the GraphQL endpoint at
+      https://api.labelbox.com/graphql. Direct consumption is discouraged;
+      use the Python SDK instead.
+    endpoint: https://api.labelbox.com/graphql
+    limit: 500
+    window: per period (exact window not publicly disclosed)
+    errorCode: 429
+    retryAfterHeader: true
+    notes: >
+      Exact per-minute or per-second breakdown is not publicly disclosed.
+      SDK versions earlier than 3.68 are no longer supported and may not
+      handle rate limits correctly.
+
+  - name: REST API Rate Limit
+    description: >
+      Applies to requests to the REST API at https://api.labelbox.com/api/v1.
+    endpoint: https://api.labelbox.com/api/v1
+    limit: 500
+    window: per period (exact window not publicly disclosed)
+    errorCode: 429
+    retryAfterHeader: true
+    notes: >
+      Specific per-minute limits are not publicly documented. Consult
+      Labelbox support or your account representative for enterprise-grade
+      limit details.
+
+recommendations:
+  - Use the official Python SDK (pip install labelbox) which handles
+    pagination and retry logic automatically.
+  - Use bulk operations instead of individual API calls where possible.
+  - Use pagination methods (get_one, get_many) rather than list() to
+    avoid fetching large datasets in a single request.
+  - Monitor for Retry-After headers and implement exponential back-off
+    when receiving 429 responses.
+
+references:
+  - url: https://docs.labelbox.com/reference/getting-started
+    description: Official API getting started guide
+  - url: https://labelbox-python.readthedocs.io/en/latest/
+    description: Python SDK reference documentation
