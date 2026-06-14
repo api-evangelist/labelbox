@@ -1,0 +1,584 @@
+"""
+Labelbox GraphQL Schema
+Derived from the Labelbox Python SDK source (github.com/Labelbox/labelbox-python)
+and confirmed field names from the ORM layer (libs/labelbox/src/labelbox/).
+Endpoint: https://api.labelbox.com/graphql
+Authentication: Authorization: Bearer <API_KEY>
+"""
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+# ---------------------------------------------------------------------------
+# Root Query type — reflects client.py get_* methods
+# ---------------------------------------------------------------------------
+
+type Query {
+  project(id: ID!): Project
+  projects(where: ProjectWhere, skip: Int, first: Int): [Project!]!
+  dataset(id: ID!): Dataset
+  datasets(where: DatasetWhere, skip: Int, first: Int): [Dataset!]!
+  dataRow(id: ID!): DataRow
+  dataRowByGlobalKey(globalKey: String!): DataRow
+  user: User
+  users(where: UserWhere, skip: Int, first: Int): [User!]!
+  organization: Organization
+  ontology(id: ID!): Ontology
+  ontologies(namContains: String, skip: Int, first: Int): [Ontology!]!
+  featureSchema(id: ID!): FeatureSchema
+  featureSchemas(nameContains: String, skip: Int, first: Int): [FeatureSchema!]!
+  model(id: ID!): Model
+  models(where: ModelWhere, skip: Int, first: Int): [Model!]!
+  modelRun(id: ID!): ModelRun
+  task(id: ID!): Task
+  batch(projectId: ID!, batchId: ID!): Batch
+  catalogSlice(id: ID!): CatalogSlice
+  catalogSlices: [CatalogSlice!]!
+  roles: [Role!]!
+  apiKeys(includeExpired: Boolean): [ApiKey!]!
+  apiKey(id: ID!): ApiKey
+  embeddings: [Embedding!]!
+  embedding(id: ID!): Embedding
+}
+
+# ---------------------------------------------------------------------------
+# Root Mutation type — reflects client.py create_*/delete_* methods
+# ---------------------------------------------------------------------------
+
+type Mutation {
+  createProject(
+    name: String!
+    description: String
+    mediaType: MediaType
+    editorTaskType: EditorTaskType
+  ): Project!
+
+  updateProject(id: ID!, name: String, description: String): Project!
+  deleteProject(id: ID!): Boolean!
+
+  createDataset(
+    name: String!
+    description: String
+    iamIntegrationId: ID
+  ): Dataset!
+
+  updateDataset(id: ID!, name: String, description: String): Dataset!
+  deleteDataset(id: ID!): Boolean!
+
+  createOntology(
+    name: String!
+    description: String
+    normalized: JSON!
+  ): Ontology!
+
+  updateOntology(id: ID!, name: String, description: String): Ontology!
+  deleteOntology(id: ID!): Boolean!
+
+  createFeatureSchema(normalized: JSON!): FeatureSchema!
+  deleteFeatureSchema(id: ID!): Boolean!
+  deleteFeatureSchemaFromOntology(
+    ontologyId: ID!
+    featureSchemaId: ID!
+  ): DeleteFeatureFromOntologyResult!
+
+  createModel(name: String!, ontologyId: ID!): Model!
+
+  createModelConfig(
+    modelId: ID!
+    name: String!
+    inferenceParams: JSON
+  ): ModelConfig!
+
+  deleteModelConfig(id: ID!): Boolean!
+
+  createBatch(
+    projectId: ID!
+    name: String!
+    dataRowIds: [ID!]!
+    priority: Int
+  ): Batch!
+
+  deleteBatch(projectId: ID!, batchId: ID!): Boolean!
+
+  createWebhook(
+    projectId: ID
+    url: String!
+    topics: String!
+    secret: String
+  ): Webhook!
+
+  updateWebhook(id: ID!, url: String, topics: String, status: String): Webhook!
+
+  createEmbedding(name: String!, dims: Int!): Embedding!
+
+  createApiKey(name: String!, expiresAt: DateTime): ApiKey!
+}
+
+# ---------------------------------------------------------------------------
+# Project
+# ---------------------------------------------------------------------------
+
+type Project {
+  id: ID!
+  name: String!
+  description: String
+  updatedAt: DateTime
+  createdAt: DateTime
+  setupComplete: DateTime
+  lastActivityTime: DateTime
+  autoAuditNumberOfLabels: Int
+  autoAuditPercentage: Float
+  mediaType: MediaType
+  editorTaskType: EditorTaskType
+  dataRowCount: Int
+  isBenchmarkEnabled: Boolean
+  isConsensusEnabled: Boolean
+  accessFrom: String
+  priority: Int
+  numberOfLabels: Int
+  createdBy: User
+  organization: Organization
+  labelingFrontend: LabelingFrontend
+  labelingFrontendOptions: [LabelingFrontendOptions!]!
+  webhooks: [Webhook!]!
+  ontology: Ontology
+  datasets: [Dataset!]!
+  batches: [Batch!]!
+}
+
+input ProjectWhere {
+  id: ID
+  name: String
+}
+
+# ---------------------------------------------------------------------------
+# Dataset
+# ---------------------------------------------------------------------------
+
+type Dataset {
+  id: ID!
+  name: String!
+  description: String
+  updatedAt: DateTime
+  createdAt: DateTime
+  rowCount: Int
+  createdBy: User
+  organization: Organization
+  iamIntegration: IAMIntegration
+  dataRows(fromCursor: String, where: DataRowWhere, first: Int): [DataRow!]!
+}
+
+input DatasetWhere {
+  id: ID
+  name: String
+}
+
+# ---------------------------------------------------------------------------
+# DataRow
+# ---------------------------------------------------------------------------
+
+type DataRow {
+  id: ID!
+  externalId: String
+  globalKey: String
+  rowData: String!
+  updatedAt: DateTime
+  createdAt: DateTime
+  mediaAttributes: JSON
+  metadataFields: [DataRowMetadataField!]!
+  dataset: Dataset
+  createdBy: User
+  organization: Organization
+  labels: [Label!]!
+  attachments: [AssetAttachment!]!
+}
+
+input DataRowWhere {
+  id: ID
+  externalId: String
+  globalKey: String
+}
+
+# ---------------------------------------------------------------------------
+# Label
+# ---------------------------------------------------------------------------
+
+type Label {
+  id: ID!
+  label: String
+  secondsToLabel: Float
+  agreement: Float
+  benchmarkAgreement: Float
+  isBenchmarkReference: Boolean
+  updatedAt: DateTime
+  createdAt: DateTime
+  project: Project
+  dataRow: DataRow
+  reviews: [Review!]!
+  createdBy: User
+}
+
+# ---------------------------------------------------------------------------
+# Ontology and FeatureSchema (OntologyClass)
+# ---------------------------------------------------------------------------
+
+type Ontology {
+  id: ID!
+  name: String!
+  description: String
+  updatedAt: DateTime
+  createdAt: DateTime
+  normalized: JSON
+  objectSchemaCount: Int
+  classificationSchemaCount: Int
+  mediaType: MediaType
+  projects: [Project!]!
+  createdBy: User
+}
+
+type FeatureSchema {
+  id: ID!
+  name: String!
+  color: String
+  normalized: JSON
+}
+
+type DeleteFeatureFromOntologyResult {
+  ontology: Ontology
+  featureSchema: FeatureSchema
+}
+
+# ---------------------------------------------------------------------------
+# LabelingFrontend
+# ---------------------------------------------------------------------------
+
+type LabelingFrontend {
+  id: ID!
+  name: String!
+  description: String
+  iframeUrlPath: String
+}
+
+type LabelingFrontendOptions {
+  id: ID!
+  customizationOptions: String
+  project: Project
+  labelingFrontend: LabelingFrontend
+  organization: Organization
+}
+
+# ---------------------------------------------------------------------------
+# User and Organization
+# ---------------------------------------------------------------------------
+
+type User {
+  id: ID!
+  updatedAt: DateTime
+  createdAt: DateTime
+  email: String!
+  name: String
+  nickname: String
+  picture: String
+  isViewer: Boolean
+  isExternalUser: Boolean
+  organization: Organization
+  createdTasks: [Task!]!
+  projects: [Project!]!
+  orgRole: OrgRole
+}
+
+input UserWhere {
+  id: ID
+  email: String
+}
+
+type Organization {
+  id: ID!
+  updatedAt: DateTime
+  createdAt: DateTime
+  name: String!
+  users: [User!]!
+  projects: [Project!]!
+  webhooks: [Webhook!]!
+  resourceTags: [ResourceTag!]!
+  tasks: [Task!]!
+}
+
+type OrgRole {
+  id: ID!
+  name: String!
+}
+
+type Role {
+  id: ID!
+  name: String!
+}
+
+# ---------------------------------------------------------------------------
+# Task
+# ---------------------------------------------------------------------------
+
+type Task {
+  id: ID!
+  updatedAt: DateTime
+  createdAt: DateTime
+  name: String!
+  status: String
+  completionPercentage: Float
+  resultUrl: String
+  errorsUrl: String
+  type: String
+  metadata: JSON
+  createdBy: User
+  organization: Organization
+}
+
+# ---------------------------------------------------------------------------
+# Batch
+# ---------------------------------------------------------------------------
+
+type Batch {
+  id: ID!
+  name: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  size: Int
+  consensusSettings: JSON
+  createdBy: User
+}
+
+# ---------------------------------------------------------------------------
+# Model and ModelRun
+# ---------------------------------------------------------------------------
+
+type Model {
+  id: ID!
+  name: String!
+  ontologyId: String
+  modelRuns: [ModelRun!]!
+}
+
+input ModelWhere {
+  id: ID
+  name: String
+}
+
+type ModelRun {
+  id: ID!
+  name: String!
+  updatedAt: DateTime
+  createdAt: DateTime
+  createdById: String
+  modelId: String
+  trainingMetadata: JSON
+  modelAppId: String
+}
+
+type ModelConfig {
+  id: ID!
+  name: String!
+}
+
+# ---------------------------------------------------------------------------
+# AnnotationImport
+# ---------------------------------------------------------------------------
+
+type AnnotationImport {
+  id: ID!
+  name: String!
+  state: AnnotationImportState!
+  inputFileUrl: String
+  errorFileUrl: String
+  statusFileUrl: String
+  progress: String
+  createdBy: User
+}
+
+type LabelImport {
+  id: ID!
+  name: String!
+  state: AnnotationImportState!
+  inputFileUrl: String
+  errorFileUrl: String
+  statusFileUrl: String
+  progress: String
+  project: Project
+  createdBy: User
+}
+
+type MALPredictionImport {
+  id: ID!
+  name: String!
+  state: AnnotationImportState!
+  inputFileUrl: String
+  errorFileUrl: String
+  statusFileUrl: String
+  progress: String
+  project: Project
+  createdBy: User
+}
+
+type MEAPredictionImport {
+  id: ID!
+  name: String!
+  state: AnnotationImportState!
+  inputFileUrl: String
+  errorFileUrl: String
+  statusFileUrl: String
+  progress: String
+  modelRunId: String
+  createdBy: User
+}
+
+# ---------------------------------------------------------------------------
+# Review
+# ---------------------------------------------------------------------------
+
+type Review {
+  id: ID!
+  updatedAt: DateTime
+  createdAt: DateTime
+  score: Float
+  createdBy: User
+  organization: Organization
+  project: Project
+  label: Label
+}
+
+# ---------------------------------------------------------------------------
+# Webhook
+# ---------------------------------------------------------------------------
+
+type Webhook {
+  id: ID!
+  updatedAt: DateTime
+  createdAt: DateTime
+  url: String!
+  topics: String!
+  status: String
+  createdBy: User
+  organization: Organization
+  project: Project
+}
+
+# ---------------------------------------------------------------------------
+# AssetAttachment
+# ---------------------------------------------------------------------------
+
+type AssetAttachment {
+  id: ID!
+  type: String
+  value: String
+}
+
+# ---------------------------------------------------------------------------
+# IAMIntegration
+# ---------------------------------------------------------------------------
+
+type IAMIntegration {
+  id: ID!
+  name: String
+  type: String
+}
+
+# ---------------------------------------------------------------------------
+# ResourceTag
+# ---------------------------------------------------------------------------
+
+type ResourceTag {
+  id: ID!
+  text: String
+  color: String
+}
+
+# ---------------------------------------------------------------------------
+# Embedding
+# ---------------------------------------------------------------------------
+
+type Embedding {
+  id: ID!
+  name: String!
+  dims: Int
+}
+
+# ---------------------------------------------------------------------------
+# CatalogSlice
+# ---------------------------------------------------------------------------
+
+type CatalogSlice {
+  id: ID!
+  name: String
+  description: String
+}
+
+# ---------------------------------------------------------------------------
+# ApiKey
+# ---------------------------------------------------------------------------
+
+type ApiKey {
+  id: ID!
+  name: String
+  createdAt: DateTime
+  expiresAt: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# DataRowMetadataField
+# ---------------------------------------------------------------------------
+
+type DataRowMetadataField {
+  schemaId: String
+  value: JSON
+}
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum MediaType {
+  AUDIO
+  CONVERSATIONAL
+  PDF
+  TMS_GEO
+  HTML
+  IMAGE
+  LLM_PROMPT_CREATION
+  LLM_PROMPT_RESPONSE_CREATION
+  TMS_SIMPLE
+  TEXT
+  UNKNOWN
+  UNSUPPORTED
+  VIDEO
+  POINT_CLOUD
+  LLM
+}
+
+enum EditorTaskType {
+  OFFLINE_MODEL_EVALUATION
+  MODEL_EVALUATION
+  ANNOTATION
+  PROMPT_RESPONSE_GENERATION
+  RESPONSE_CREATION
+}
+
+enum AnnotationImportState {
+  RUNNING
+  FAILED
+  FINISHED
+}
+
+enum DataSplit {
+  TRAINING
+  TEST
+  VALIDATION
+  UNASSIGNED
+}
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar JSON

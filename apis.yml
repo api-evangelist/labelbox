@@ -5,101 +5,101 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/labelbox/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: "0.19"
-description: >
-  Labelbox is an enterprise-grade data labeling and AI training data platform
-  that enables teams to build, manage, and evaluate machine learning models.
-  The platform provides a REST API and a GraphQL API (endpoint:
-  https://api.labelbox.com/graphql) for programmatic access to datasets,
-  annotation projects, labels, ontologies, and model evaluation workflows.
-  Labelbox strongly recommends using its official Python SDK rather than
-  querying the GraphQL API directly, as GraphQL endpoints may change without
-  notice. The platform also supports JavaScript/TypeScript through a Node.js
+specificationVersion: '0.19'
+description: 'Labelbox is an enterprise-grade data labeling and AI training data platform
+  that enables teams to build, manage, and evaluate machine learning models. The platform
+  provides a REST API and a GraphQL API (endpoint: https://api.labelbox.com/graphql)
+  for programmatic access to datasets, annotation projects, labels, ontologies, and
+  model evaluation workflows. Labelbox strongly recommends using its official Python
+  SDK rather than querying the GraphQL API directly, as GraphQL endpoints may change
+  without notice. The platform also supports JavaScript/TypeScript through a Node.js
   SDK and offers notebook-based examples via its GitHub organization.
+
+  '
 tags:
-  - Data Labeling
-  - AI Training
-  - Machine Learning
-  - Annotation
-  - Computer Vision
-  - RLHF
-  - Model Evaluation
-  - Dataset Management
-  - GraphQL
-  - Python SDK
-
+- Data Labeling
+- AI Training
+- Machine Learning
+- Annotation
+- Computer Vision
+- RLHF
+- Model Evaluation
+- Dataset Management
+- GraphQL
+- Python SDK
 apis:
-  - name: Labelbox GraphQL API
-    description: >
-      GraphQL API for programmatic access to Labelbox platform resources
-      including datasets, projects, labels, ontologies, and model evaluation
-      workflows. Labelbox recommends using the Python SDK as a wrapper rather
-      than querying this endpoint directly.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.labelbox.com/reference/getting-started
-    baseURL: https://api.labelbox.com/graphql
-    tags:
-      - GraphQL
-      - Data Labeling
-      - Annotation
-      - Datasets
-    properties:
-      - type: Documentation
-        url: https://docs.labelbox.com/reference/getting-started
-      - type: PythonSDK
-        url: https://labelbox-python.readthedocs.io/en/latest/
-      - type: GitHubRepository
-        url: https://github.com/Labelbox/labelbox-python
+- name: Labelbox GraphQL API
+  description: 'GraphQL API for programmatic access to Labelbox platform resources
+    including datasets, projects, labels, ontologies, and model evaluation workflows.
+    Labelbox recommends using the Python SDK as a wrapper rather than querying this
+    endpoint directly.
 
-  - name: Labelbox REST API
-    description: >
-      REST API providing access to Labelbox platform resources. Available at
-      https://api.labelbox.com/api/v1, this endpoint complements the GraphQL
-      API for operations that benefit from RESTful conventions.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.labelbox.com/reference/getting-started
-    baseURL: https://api.labelbox.com/api/v1
-    tags:
-      - REST
-      - Data Labeling
-      - Annotation
-      - Datasets
-    properties:
-      - type: Documentation
-        url: https://docs.labelbox.com/reference/getting-started
-
-common:
-  - type: Website
-    url: https://labelbox.com
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.labelbox.com/reference/getting-started
+  baseURL: https://api.labelbox.com/graphql
+  tags:
+  - GraphQL
+  - Data Labeling
+  - Annotation
+  - Datasets
+  properties:
   - type: Documentation
-    url: https://docs.labelbox.com
-  - type: GitHubOrganization
-    url: https://github.com/Labelbox
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/labelbox
-  - type: X
-    url: https://x.com/labelbox
-  - type: Blog
-    url: https://labelbox.com/blog/
-  - type: Pricing
-    url: https://labelbox.com/pricing/
-  - type: StatusPage
-    url: https://status.labelbox.com
-  - type: PythonSDKDocumentation
+    url: https://docs.labelbox.com/reference/getting-started
+  - type: PythonSDK
     url: https://labelbox-python.readthedocs.io/en/latest/
-  - type: PyPI
-    url: https://pypi.org/project/labelbox/
-  - type: Plans
-    url: plans/labelbox-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/labelbox-rate-limits.yml
-  - type: FinOps
-    url: finops/labelbox-finops.yml
-  - type: BlogPosts
-    url: blogs/blogs.json
-  - type: JSONLDContext
-    url: json-ld/labelbox-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/Labelbox/labelbox-python
+  - url: graphql/labelbox-graphql.md
+    type: GraphQL
+- name: Labelbox REST API
+  description: 'REST API providing access to Labelbox platform resources. Available
+    at https://api.labelbox.com/api/v1, this endpoint complements the GraphQL API
+    for operations that benefit from RESTful conventions.
 
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.labelbox.com/reference/getting-started
+  baseURL: https://api.labelbox.com/api/v1
+  tags:
+  - REST
+  - Data Labeling
+  - Annotation
+  - Datasets
+  properties:
+  - type: Documentation
+    url: https://docs.labelbox.com/reference/getting-started
+common:
+- type: Website
+  url: https://labelbox.com
+- type: Documentation
+  url: https://docs.labelbox.com
+- type: GitHubOrganization
+  url: https://github.com/Labelbox
+- type: LinkedIn
+  url: https://www.linkedin.com/company/labelbox
+- type: X
+  url: https://x.com/labelbox
+- type: Blog
+  url: https://labelbox.com/blog/
+- type: Pricing
+  url: https://labelbox.com/pricing/
+- type: StatusPage
+  url: https://status.labelbox.com
+- type: PythonSDKDocumentation
+  url: https://labelbox-python.readthedocs.io/en/latest/
+- type: PyPI
+  url: https://pypi.org/project/labelbox/
+- type: Plans
+  url: plans/labelbox-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/labelbox-rate-limits.yml
+- type: FinOps
+  url: finops/labelbox-finops.yml
+- type: BlogPosts
+  url: blogs/blogs.json
+- type: JSONLDContext
+  url: json-ld/labelbox-context.jsonld
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
