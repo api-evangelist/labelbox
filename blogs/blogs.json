@@ -5,7 +5,7 @@
   "rssUrl": null,
   "rssAvailable": false,
   "note": "No RSS/Atom feed discovered at common paths (/blog/rss, /feed, /feed.xml, /blog/rss.xml, /blog/feed). Blog is served as a JavaScript-rendered page without a discoverable feed endpoint.",
-  "fetched": "2026-06-12",
+  "fetched": "2026-06-14T20:42:17Z",
   "posts": [
     {
       "title": "When benchmarks saturate, what comes next? Meta's GIM pushes AI evaluation toward integrated reasoning",
@@ -57,5 +57,16 @@
       "url": "https://labelbox.com/blog/announcing-r-constraintbench-a-novel-way-to-stress-test-llm-reasoning-abilities-under-interacting-constraints",
       "date": "2025-08-22"
     }
-  ]
+  ],
+  "repo": "labelbox",
+  "feeds": [
+    {
+      "source": "https://x.com/labelbox",
+      "feed_url": "https://x.com/labelbox",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0
 }
