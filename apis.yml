@@ -1,7 +1,7 @@
 aid: labelbox
 name: Labelbox
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/labelbox/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -35,7 +35,7 @@ apis:
     endpoint directly.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.labelbox.com/reference/getting-started
   baseURL: https://api.labelbox.com/graphql
   tags:
@@ -58,7 +58,7 @@ apis:
     for operations that benefit from RESTful conventions.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.labelbox.com/reference/getting-started
   baseURL: https://api.labelbox.com/api/v1
   tags:
