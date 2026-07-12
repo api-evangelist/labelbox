@@ -70,6 +70,12 @@ apis:
   - type: Documentation
     url: https://docs.labelbox.com/reference/getting-started
 common:
+- type: TrustCenter
+  url: security/labelbox-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/labelbox-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/labelbox-domain-security.yml
 - type: Website
   url: https://labelbox.com
 - type: Documentation
