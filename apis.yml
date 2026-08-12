@@ -82,6 +82,17 @@ apis:
   - type: Documentation
     url: https://docs.labelbox.com/reference/getting-started
 common:
+- type: IssueTracker
+  url: https://github.com/Labelbox/labelbox-python/issues
+- type: Releases
+  url: https://github.com/Labelbox/labelbox-python/releases
+- type: SecurityPolicy
+  url: https://github.com/Labelbox/labelbox-python/blob/develop/SECURITY.md
+- type: ContributionGuide
+  url: https://github.com/Labelbox/labelbox-python/blob/develop/CONTRIBUTING.md
+- type: License
+  name: Apache-2.0
+  url: https://github.com/Labelbox/labelbox-python/blob/develop/LICENSE
 - type: TrustCenter
   url: security/labelbox-trust-center.yml
 - type: VulnerabilityDisclosure
