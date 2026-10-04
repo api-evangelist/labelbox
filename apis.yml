@@ -41,12 +41,16 @@ description: 'Labelbox is an enterprise-grade data labeling and AI training data
   SDK and offers notebook-based examples via its GitHub organization.
 
   '
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: vercel
 tags:
 - Data Labeling
 - AI Training
-- Machine-Learning
+- Machine Learning
 - Annotation
-- Computer-Vision
+- Computer Vision
 - RLHF
 - Model Evaluation
 - Dataset Management
@@ -63,6 +67,8 @@ tags_raw:
 - Dataset Management
 - GraphQL
 - Python SDK
+- Machine-Learning
+- Computer-Vision
 apis:
 - name: Labelbox GraphQL API
   description: 'GraphQL API for programmatic access to Labelbox platform resources
