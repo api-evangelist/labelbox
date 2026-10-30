@@ -1,4 +1,4 @@
-# Labelbox (labelbox)
+# Labelbox
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,64 +64,121 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Labelbox is an enterprise-grade data labeling and AI training data platform that enables teams to build, manage, and evaluate machine learning models at scale. The platform provides a GraphQL API (https://api.labelbox.com/graphql) and a REST API (https://api.labelbox.com/api/v1) for programmatic access to datasets, annotation projects, labels, ontologies, and model evaluation workflows. Labelbox offers official Python and Node.js SDKs, and strongly recommends using the Python SDK rather than querying the GraphQL API directly. The platform supports RLHF preference data generation, model-assisted labeling, auto-labeling, and Foundry model integration.
+Labelbox is an enterprise-grade data labeling and AI training data platform that enables teams to build, manage, and evaluate machine learning models. The platform provides a REST API and a GraphQL API (endpoint: https://api.labelbox.com/graphql) for programmatic access to datasets, annotation projects, labels, ontologies, and model evaluation workflows. Labelbox strongly recommends using its official Python SDK rather than querying the GraphQL API directly, as GraphQL endpoints may change without notice. The platform also supports JavaScript/TypeScript through a Node.js SDK and offers notebook-based examples via its GitHub organization.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/labelbox/refs/heads/main/apis.yml
+**Areas:** Data Labeling · AI Training · Machine Learning · Annotation · Computer Vision · RLHF · Model Evaluation · Dataset Management · GraphQL · Python SDK
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=labelbox-api-evangelist&utm_content=repo
+## Labelbox on APIs.io
 
-## Tags
+Everything profiled for Labelbox is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/labelbox/](https://apis.io/providers/labelbox/)** — or go straight to one of the APIs or properties below.
 
-- Data Labeling
-- AI Training
-- Machine Learning
-- Annotation
-- Computer Vision
-- RLHF
-- Model Evaluation
-- Dataset Management
-- GraphQL
-- Python SDK
+### APIs (2)
 
-## APIs
+- [Labelbox GraphQL API](https://apis.io/apis/labelbox/labelbox-graphql-api/) — GraphQL API for programmatic access to Labelbox platform resources including datasets, projects, labels, ontologies, and model evaluation workflows.…
+- [Labelbox REST API](https://apis.io/apis/labelbox/labelbox-rest-api/) — REST API providing access to Labelbox platform resources. Available at https://api.labelbox.com/api/v1, this endpoint complements the GraphQL API for…
 
-| Name | Description | Base URL |
-|------|-------------|----------|
-| Labelbox GraphQL API | GraphQL API for programmatic access to platform resources including datasets, projects, labels, and ontologies | https://api.labelbox.com/graphql |
-| Labelbox REST API | REST API for accessing Labelbox platform resources | https://api.labelbox.com/api/v1 |
+### Published properties
 
-## Plans, Rate Limits, and FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | File |
-|----------|------|
-| Plans & Pricing | [plans/labelbox-plans-pricing.yml](plans/labelbox-plans-pricing.yml) |
-| Rate Limits | [rate-limits/labelbox-rate-limits.yml](rate-limits/labelbox-rate-limits.yml) |
-| FinOps | [finops/labelbox-finops.yml](finops/labelbox-finops.yml) |
+#### GraphQL (1)
 
-**Pricing model:** Consumption-based using Labelbox Units (LBUs). Free tier available for evaluation; Subscription tier for production workloads.
+GraphQL schemas.
 
-**Rate limits:** 429 status code with Retry-After header on limit breach. Use the Python SDK for automatic retry handling.
+- [Labelbox GraphQL API](https://apis.io/graphqls/labelbox/labelbox-graphql/)
 
-## Timestamps
+#### JSON-LD (1)
 
-- Created: 2026-06-12
-- Modified: 2026-06-12
+Linked-data contexts for the provider's vocabulary.
 
-## Common Properties
+- [Labelbox Context](https://apis.io/jsonld/labelbox/labelbox-context/)
 
-| Type | URL |
-|------|-----|
-| Website | https://labelbox.com |
-| Documentation | https://docs.labelbox.com |
-| GitHub Organization | https://github.com/Labelbox |
-| LinkedIn | https://www.linkedin.com/company/labelbox |
-| X | https://x.com/labelbox |
-| Blog | https://labelbox.com/blog/ |
-| Pricing | https://labelbox.com/pricing/ |
-| Status Page | https://status.labelbox.com |
-| Python SDK Docs | https://labelbox-python.readthedocs.io/en/latest/ |
-| PyPI | https://pypi.org/project/labelbox/ |
+#### Security (3)
 
-## Maintainers
+Authentication, trust centre, and vulnerability disclosure.
 
-**Kin Lane** — kin@apievangelist.com
+- [Labelbox Domain Security](https://apis.io/security/labelbox/labelbox-domain-security/)
+- [Labelbox Trust Center](https://apis.io/security/labelbox/labelbox-trust-center/)
+- [Labelbox Vulnerability Disclosure](https://apis.io/security/labelbox/labelbox-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Labelbox Plans Pricing](https://apis.io/plans/labelbox/labelbox-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Labelbox Rate Limits](https://apis.io/rate-limits/labelbox/labelbox-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Labelbox Finops](https://apis.io/finops/labelbox/labelbox-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://labelbox.com)
+- [Documentation](https://docs.labelbox.com)
+- [Pricing](https://labelbox.com/pricing/)
+- [Blog](https://labelbox.com/blog/)
+- [GitHub](https://github.com/Labelbox)
+- [Status](https://status.labelbox.com)
+
+## API Evangelist rating
+
+**Kin Score 35.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 43.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 50.0 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 13.2 |
+
+**Agent readiness 13.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.0** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/labelbox/](https://apis.io/providers/labelbox/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Labelbox: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/labelbox/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
